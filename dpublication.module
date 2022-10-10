@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Drupal publication module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function dpublication_theme(): array {
+  return [
+    'publication' => [
+      'render element' => 'elements',
+      'file' => 'dpublication.theme.inc',
+    ],
+    'publication_page' => [
+      'render element' => 'elements',
+      'file' => 'dpublication.theme.inc',
+    ],
+    'publication_pager' => [
+      'variables' => [
+        'previous' => NULL,
+        'next' => NULL,
+      ],
+      'file' => 'dpublication.theme.inc',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_toolbar_alter().
+ */
+function dpublication_toolbar_alter(&$items): void {
+  $items['administration']['#attached']['library'][] = 'dpublication/toolbar.icon';
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function dpublication_theme_suggestions_off_canvas_page_wrapper(): array {
+  return \Drupal::service('dpublication.suggestions_preparer')->theme('off_canvas_page_wrapper');
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function dpublication_theme_suggestions_page(): array {
+  return \Drupal::service('dpublication.suggestions_preparer')->theme('page');
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function dpublication_theme_suggestions_publication(): array {
+  return \Drupal::service('dpublication.suggestions_preparer')->entityTemplate('publication');
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function dpublication_theme_suggestions_publication_page(): array {
+  return \Drupal::service('dpublication.suggestions_preparer')->entityTemplate('publication_page');
+}

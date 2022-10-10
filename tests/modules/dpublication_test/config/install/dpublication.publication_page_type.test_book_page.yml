@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: test_book_page
+label: 'Test Book page'
+description: ''

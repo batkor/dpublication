@@ -1,0 +1,23 @@
+services:
+  dpublication.breadcrumb:
+    class: Drupal\dpublication\Breadcrumb\DpublicationBreadcrumb
+    tags:
+      - { name: breadcrumb_builder, priority: 100 }
+
+  dpublication.dpublication_route_context:
+    class: Drupal\dpublication\ContextProvider\RouteContextProvider
+    arguments:
+      - '@current_route_match'
+      - '@entity_type.manager'
+    tags:
+      - { name: 'context_provider' }
+
+  dpublication.suggestions_preparer:
+    class: Drupal\dpublication\SuggestionsPreparer
+    arguments:
+      - '@current_route_match'
+
+  dpublication.route_subscriber:
+    class: Drupal\dpublication\EventSubscriber\PublicationRouteSubscriber
+    tags:
+      - { name: event_subscriber }

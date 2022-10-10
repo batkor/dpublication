@@ -1,0 +1,26 @@
+dpublication.collection:
+  title: 'Publications'
+  route_name: entity.publication.collection
+  parent: system.admin
+  description: 'Administer and configure your publications.'
+  weight: -9
+
+dpublication.configuration:
+  title: 'Publications'
+  route_name: dpublication.configuration
+  parent: system.admin_structure
+  description: 'Administer and configure your publications.'
+  weight: -9
+
+entity.publication_type.collection:
+  title: 'Publication types'
+  parent: dpublication.configuration
+  description: 'Create and manage fields, forms, and display settings for your publication types.'
+  route_name: entity.publication_type.collection
+  weight: -1
+
+entity.publication_page_type.collection:
+  title: 'Publication page types'
+  parent: dpublication.configuration
+  description: 'Create and manage fields, forms, and display settings for your publication page types.'
+  route_name: entity.publication_page_type.collection

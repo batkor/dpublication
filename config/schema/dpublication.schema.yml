@@ -1,0 +1,30 @@
+dpublication.publication_type.*:
+  type: config_entity
+  label: 'Publication type'
+  mapping:
+    id:
+      type: string
+      label: 'Machine name'
+    label:
+      type: label
+      label: 'Name'
+    description:
+      type: text
+      label: 'Description'
+    publicationPageType:
+      type: string
+      label: 'Publication page type'
+
+dpublication.publication_page_type.*:
+  type: config_entity
+  label: 'Publication page type'
+  mapping:
+    id:
+      type: string
+      label: 'Machine name'
+    label:
+      type: label
+      label: 'Name'
+    description:
+      type: text
+      label: 'Description'

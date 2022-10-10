@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: test_book
+label: Book test
+description: ''
+publicationPageType: test_book_page

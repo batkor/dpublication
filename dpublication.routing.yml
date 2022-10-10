@@ -1,0 +1,7 @@
+dpublication.configuration:
+  path: '/admin/structure/publications'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Publications'
+  requirements:
+    _permission: 'administer publications'

@@ -1,0 +1,7 @@
+administer publications:
+  title: 'Administer publications'
+  description: 'Allow manage all publications.'
+  restrict access: true
+
+permission_callbacks:
+  - Drupal\dpublication\PermissionsProvider::list

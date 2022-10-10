@@ -1,0 +1,34 @@
+entity.publication.canonical:
+  title: 'View'
+  route_name: entity.publication.canonical
+  base_route: entity.publication.canonical
+
+entity.publication.edit_form:
+  title: 'Edit'
+  route_name: entity.publication.edit_form
+  base_route: entity.publication.canonical
+
+entity.publication_type.edit_form:
+  title: 'Edit'
+  route_name: entity.publication_type.edit_form
+  base_route: entity.publication_type.edit_form
+
+entity.publication_page_type.edit_form:
+  title: 'Edit'
+  route_name: entity.publication_page_type.edit_form
+  base_route: entity.publication_page_type.edit_form
+
+entity.publication_page.collection:
+  title: 'Pages'
+  route_name: entity.publication_page.collection
+  base_route: entity.publication.canonical
+  weight: 10
+entity.publication_page.canonical:
+  title: 'View'
+  route_name: entity.publication_page.canonical
+  base_route: entity.publication_page.canonical
+
+entity.publication_page.edit_form:
+  title: 'Edit'
+  route_name: entity.publication_page.edit_form
+  base_route: entity.publication_page.canonical

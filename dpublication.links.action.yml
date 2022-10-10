@@ -1,0 +1,23 @@
+publication.add_page:
+  route_name: entity.publication.add_page
+  title: 'Add publication'
+  appears_on:
+    - entity.publication.collection
+
+publication_page.add_page:
+  route_name: entity.publication_page.add_form
+  title: 'Add publication page'
+  appears_on:
+    - entity.publication_page.collection
+
+publication_type.add_form:
+  route_name: entity.publication_type.add_form
+  title: 'Add publication type'
+  appears_on:
+    - entity.publication_type.collection
+
+publication_page_type.add_form:
+  route_name: entity.publication_page_type.add_form
+  title: 'Add publication page type'
+  appears_on:
+    - entity.publication_page_type.collection
