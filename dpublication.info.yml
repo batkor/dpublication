@@ -3,3 +3,5 @@ type: module
 description: 'Provides publication entity.'
 package: Custom
 core_version_requirement: ^9 || ^10
+dependencies:
+  - drupal:text
