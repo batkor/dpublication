@@ -88,7 +88,7 @@ class PublicationPage extends ContentEntityBase implements PublicationPageInterf
 
     $fields['title'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Title'))
-      ->setRequired(TRUE)
+      ->setRequired(FALSE)
       ->setTranslatable(TRUE)
       ->setSetting('max_length', 500)
       ->setDisplayOptions('view', [
@@ -97,7 +97,7 @@ class PublicationPage extends ContentEntityBase implements PublicationPageInterf
         'weight' => -5,
       ])
       ->setDisplayOptions('form', [
-        'type' => 'string_textfield',
+        'type' => 'publication_page_title',
         'weight' => -5,
       ])
       ->setDisplayConfigurable('form', TRUE)

@@ -12,8 +12,6 @@ use Drupal\Tests\RandomGeneratorTrait;
 /**
  * Tests loading, saving, read and deleting entities.
  *
- * Tests entity types provides "dpublication" module.
- *
  * @group dpublication
  */
 class CrudTest extends KernelTestBase {

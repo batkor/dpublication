@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Drupal\dpublication\Form\Publication;
 
-use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\dpublication\Form\DpublicationBaseForm;
 
 /**
  * Implements default form for publication entity.
  */
-class PublicationForm extends ContentEntityForm {
+class PublicationForm extends DpublicationBaseForm {
 
   /**
    * {@inheritdoc}
@@ -34,10 +34,6 @@ class PublicationForm extends ContentEntityForm {
   protected function actions(array $form, FormStateInterface $form_state) {
     $actions = parent::actions($form, $form_state);
     $actions['delete']['#title'] = $this->t('Remove publication');
-
-    if ($this->getEntity()->isNew()) {
-      $actions['submit']['#value'] = $this->t('Create');
-    }
 
     return $actions;
   }

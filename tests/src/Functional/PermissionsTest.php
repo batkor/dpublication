@@ -9,6 +9,8 @@ use Drupal\user\Entity\User;
 
 /**
  * Provides tests permissions to entities.
+ *
+ * @group dpublication
  */
 class PermissionsTest extends BrowserTestBase {
 

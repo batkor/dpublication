@@ -28,3 +28,11 @@ dpublication.publication_page_type.*:
     description:
       type: text
       label: 'Description'
+
+field.widget.settings.publication_page_title:
+  type: mapping
+  label: 'Publication page title widget settings'
+  mapping:
+    always_show:
+      type: boolean
+      label: 'Status display a field'

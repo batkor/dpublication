@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Drupal\dpublication\Form\PublicationPage;
 
-use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\dpublication\Entity\PublicationPage;
+use Drupal\dpublication\Form\DpublicationBaseForm;
 
 /**
  * Implements default form for publication page entity.
  */
-class PublicationPageForm extends ContentEntityForm {
+class PublicationPageForm extends DpublicationBaseForm {
 
   /**
    * {@inheritdoc}
@@ -35,19 +35,6 @@ class PublicationPageForm extends ContentEntityForm {
       ->entityTypeManager
       ->getStorage('publication_page')
       ->create($values);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function actions(array $form, FormStateInterface $form_state) {
-    $actions = parent::actions($form, $form_state);
-
-    if ($this->getEntity()->isNew()) {
-      $actions['submit']['#value'] = $this->t('Create');
-    }
-
-    return $actions;
   }
 
   /**
