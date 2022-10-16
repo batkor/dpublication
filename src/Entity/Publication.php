@@ -66,7 +66,7 @@ class Publication extends ContentEntityBase implements PublicationInterface {
   /**
    * {@inheritdoc}
    */
-  public function getBundleEntity(): PublicationType {
+  public function getBundleEntity(): PublicationTypeInterface {
     return $this->get('type')->first()->get('entity')->getValue();
   }
 

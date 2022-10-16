@@ -3,11 +3,9 @@
 namespace Drupal\dpublication\Access;
 
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\dpublication\Entity\PublicationInterface;
@@ -23,18 +21,7 @@ class PublicationPageAccessControlHandler extends PublicationAccessControlHandle
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    $static = new static($container->get('entity_type.manager')->getDefinition('publication_page'));
-
-    return $static;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function checkAccess(EntityInterface $entity, $operation, AccountInterface $account) {
-    assert($entity instanceof PublicationPageInterface);
-
-    return parent::checkAccess($entity->getPublicationEntity(), $operation, $account);
+    return new static($container->get('entity_type.manager')->getDefinition('publication_page'));
   }
 
   /**
@@ -45,12 +32,12 @@ class PublicationPageAccessControlHandler extends PublicationAccessControlHandle
    * @param \Drupal\Core\Session\AccountInterface $account
    *   The current proxy user account.
    *
-   * @return bool|\Drupal\Core\Access\AccessResultInterface
+   * @return \Drupal\Core\Access\AccessResultInterface
    *   The access result.
    *
    * @see \Drupal\dpublication\Routing\PublicationPageRouteProvider::getAddFormRoute
    */
-  public function createAccessHandler(RouteMatchInterface $routeMatch, AccountInterface $account) {
+  public function createAccessHandler(RouteMatchInterface $routeMatch, AccountInterface $account): AccessResultInterface {
     $publication = $routeMatch->getParameter('publication');
 
     if (!$publication instanceof PublicationInterface) {
@@ -67,12 +54,44 @@ class PublicationPageAccessControlHandler extends PublicationAccessControlHandle
   }
 
   /**
+   * Check permissions for "entity.publication_page.collection" route.
+   *
+   * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
+   *   The current route match.
+   * @param \Drupal\Core\Session\AccountInterface $account
+   *   The current proxy user account.
+   *
+   * @return \Drupal\Core\Access\AccessResultInterface
+   *   The access result.
+   *
+   * @see \Drupal\dpublication\Routing\PublicationPageRouteProvider::getCollectionRoute
+   */
+  public function collectionAccessHandler(RouteMatchInterface $routeMatch, AccountInterface $account): AccessResultInterface {
+    $publication = $routeMatch->getParameter('publication');
+
+    if (!$publication instanceof PublicationInterface) {
+      return AccessResult::forbidden();
+    }
+
+    return parent::checkAccess($publication, 'update', $account);
+  }
+
+  /**
    * {@inheritdoc}
    */
   protected function checkCreateAccess(AccountInterface $account, array $context, $entity_bundle = NULL) {
     $entity_bundle = $context['parent_entity_bundle'] ?? $entity_bundle;
 
     return parent::checkCreateAccess($account, $context, $entity_bundle);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function checkAccess(EntityInterface $entity, $operation, AccountInterface $account) {
+    assert($entity instanceof PublicationPageInterface);
+
+    return parent::checkAccess($entity->getPublicationEntity(), $operation, $account);
   }
 
 }

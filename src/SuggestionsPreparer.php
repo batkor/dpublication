@@ -63,6 +63,7 @@ class SuggestionsPreparer {
       'entity.publication.canonical',
       'entity.publication_page.canonical',
       'entity.publication_page.edit_form',
+      'entity.publication_page.add_form',
     ];
 
     if (!in_array($this->routeMatch->getRouteName(), $allowRoutes)) {
@@ -84,6 +85,13 @@ class SuggestionsPreparer {
         $suggestions[] = $bundleSuggestion;
         $suggestions[] = "{$bundleSuggestion}__{$entity->id()}";
       }
+    }
+
+    if ($this->routeMatch->getRouteName() === 'entity.publication_page.add_form') {
+      $suggestions[] = "{$baseHook}__publication_page";
+      /** @var \Drupal\dpublication\Entity\PublicationInterface $entity */
+      $entity = $this->routeMatch->getParameter('publication');
+      $suggestions[] = "{$baseHook}__publication_page__{$entity->getBundleEntity()->getPageType()}";
     }
 
     return $suggestions;

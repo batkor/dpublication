@@ -6,6 +6,7 @@ namespace Drupal\dpublication\Routing;
 
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\Routing\AdminHtmlRouteProvider;
+use Drupal\dpublication\Access\PublicationPageAccessControlHandler;
 use Drupal\dpublication\ListBuilder\PublicationPageListBuilder;
 use Drupal\dpublication\TitleProvider;
 use Symfony\Component\Routing\Route;
@@ -73,12 +74,15 @@ class PublicationPageRouteProvider extends AdminHtmlRouteProvider {
    */
   protected function getAddFormRoute(EntityTypeInterface $entityType) {
     $route = parent::getAddFormRoute($entityType);
+    $requirements = $route->getRequirements();
+    unset($requirements['_entity_create_access']);
+    $requirements['_custom_access'] = PublicationPageAccessControlHandler::class . '::createAccessHandler';
     $route
       ->setDefaults([
         '_entity_form' => 'publication_page.default',
         'entity_type_id' => 'publication_page',
       ])
-      ->setRequirement('_custom_access', 'Drupal\dpublication\Access\PublicationPageAccessControlHandler::createAccessHandler')
+      ->setRequirements($requirements)
       ->setOption('parameters', [
         'publication' => [
           'type' => 'entity:publication',
@@ -94,7 +98,11 @@ class PublicationPageRouteProvider extends AdminHtmlRouteProvider {
    */
   protected function getCollectionRoute(EntityTypeInterface $entityType) {
     $route = parent::getCollectionRoute($entityType);
+    $requirements = $route->getRequirements();
+    unset($requirements['_permission']);
+    $requirements['_custom_access'] = PublicationPageAccessControlHandler::class . '::collectionAccessHandler';
     $route
+      ->setRequirements($requirements)
       ->setDefault('_title_callback', TitleProvider::class . '::publicationPageCollection')
       ->setOption('parameters', [
         'publication' => [

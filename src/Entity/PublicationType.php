@@ -49,7 +49,7 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  *   }
  * )
  */
-class PublicationType extends ConfigEntityBundleBase {
+class PublicationType extends ConfigEntityBundleBase implements PublicationTypeInterface {
 
   /**
    * The machine name of this publication type.
@@ -69,14 +69,20 @@ class PublicationType extends ConfigEntityBundleBase {
   /**
    * The publication page type.
    */
-  protected string $publicationPageType;
+  protected string $publicationPageType = '';
 
-  public function getDescription() {
-    return $this->description;
+  /**
+   * {@inheritdoc}
+   */
+  public function getDescription(): string {
+    return $this->description ?? '';
   }
 
-  public function getPageType(): ?string {
-    return $this->publicationPageType ?? NULL;
+  /**
+   * {@inheritdoc}
+   */
+  public function getPageType(): string {
+    return $this->publicationPageType;
   }
 
 }
