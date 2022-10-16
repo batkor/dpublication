@@ -2,12 +2,12 @@
 
 namespace Drupal\dpublication\Entity;
 
-use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Config\Entity\ConfigEntityInterface;
 
 /**
  * Defines a common interface for publication type entities.
  */
-interface PublicationTypeInterface extends EntityInterface {
+interface PublicationTypeInterface extends ConfigEntityInterface {
 
   /**
    * Returns entity description.

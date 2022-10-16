@@ -22,6 +22,7 @@ class CrudTest extends KernelTestBase {
    * {@inheritdoc}
    */
   protected static $modules = [
+    'user',
     'dpublication',
   ];
 
@@ -30,6 +31,7 @@ class CrudTest extends KernelTestBase {
    */
   protected function setUp(): void {
     parent::setUp();
+    $this->installEntitySchema('user');
     $this->installEntitySchema('publication_type');
     $this->installEntitySchema('publication');
     $this->installEntitySchema('publication_page_type');

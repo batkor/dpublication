@@ -48,7 +48,7 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  *   }
  * )
  */
-class PublicationPageType extends ConfigEntityBundleBase implements PublicationTypeInterface {
+class PublicationPageType extends ConfigEntityBundleBase implements PublicationPageTypeInterface {
 
   /**
    * The machine name of this publication page type.

@@ -14,7 +14,7 @@ interface PublicationInterface extends ContentEntityInterface, EntityPublishedIn
   /**
    * Returns bundle entity.
    */
-  public function getBundleEntity(): PublicationType;
+  public function getBundleEntity(): PublicationTypeInterface;
 
   /**
    * Returns publication pages entity list.

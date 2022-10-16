@@ -2,3 +2,5 @@ name: dpublication_test
 type: module
 description: 'Provides tests for dpublication module.'
 package: Testing
+dependencies:
+  - dpublication:dpublication
