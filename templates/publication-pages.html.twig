@@ -1,0 +1,9 @@
+{% if pages is empty %}
+  {{ 'There are not add pages'|t }}
+{% else %}
+  <ol class="publication_pages">
+    {% for page in pages %}
+      <li>{{ page.title }}</li>
+    {% endfor %}
+  </ol>
+{% endif %}

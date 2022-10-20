@@ -59,8 +59,9 @@ class PublicationPageTitleWidget extends WidgetBase {
     $element['set_title'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Set title'),
-      '#default_value' => FALSE,
+      '#default_value' => (bool) $items[$delta]->value,
       '#access' => !$this->getSetting('always_show'),
+      '#parents' => ['title', $delta, 'set_title'],
     ];
 
     $element['value'] = $element + [
@@ -81,6 +82,21 @@ class PublicationPageTitleWidget extends WidgetBase {
     }
 
     return $element;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function massageFormValues(array $values, array $form, FormStateInterface $formState) {
+    foreach ($values as &$value) {
+      if (empty($value['set_title'])) {
+        $value['value'] = '';
+      }
+
+      unset($value['set_title']);
+    }
+
+    return $values;
   }
 
   /**

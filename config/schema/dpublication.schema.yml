@@ -36,3 +36,14 @@ field.widget.settings.publication_page_title:
     always_show:
       type: boolean
       label: 'Status display a field'
+
+field.formatter.settings.dpublication_pages:
+  type: mapping
+  label: 'Publication pages field formatter settings'
+  mapping:
+    override_field_label:
+      type: boolean
+      label: 'Status for override field label'
+    label:
+      type: label
+      label: 'New field label'

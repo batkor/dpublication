@@ -141,7 +141,7 @@ class Publication extends ContentEntityBase implements PublicationInterface {
       ->setSetting('target_type', 'publication_page')
       ->setSetting('handler', 'default')
       ->setDisplayOptions('view', [
-        'type' => 'entity_reference_label',
+        'type' => 'dpublication_pages',
       ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);

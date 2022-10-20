@@ -25,6 +25,12 @@ function dpublication_theme(): array {
       ],
       'file' => 'dpublication.theme.inc',
     ],
+    'publication_pages' => [
+      'variables' => [
+        'pages' => [],
+      ],
+      'file' => 'dpublication.theme.inc',
+    ],
   ];
 }
 
