@@ -35,6 +35,7 @@ class PublicationPageTitleWidget extends WidgetBase {
     $element['always_show'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Always show'),
+      '#description' => $this->t('Select this if every page contains title field.'),
       '#default_value' => $this->getSetting('always_show'),
     ];
 
@@ -44,7 +45,7 @@ class PublicationPageTitleWidget extends WidgetBase {
   /**
    * {@inheritdoc}
    */
-  public function settingsSummary() {
+  public function settingsSummary(): array {
     $summary[] = $this->t('Always show: @status', [
       '@status' => $this->getSetting('always_show') ? $this->t('Yes') : $this->t('No'),
     ]);

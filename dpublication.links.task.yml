@@ -1,3 +1,8 @@
+entity.publication.collection:
+  title: 'Publications'
+  route_name: entity.publication.collection
+  base_route: entity.publication.collection
+
 entity.publication.canonical:
   title: 'View'
   route_name: entity.publication.canonical
