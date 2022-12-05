@@ -1,5 +1,13 @@
+{% if actions is not empty %}
+  <ul class="publication_pages_actions">
+    <label class="publication_pages_actions_label">{{ 'Actions'|t }}</label>
+    {% for action in actions %}
+      <li>{{ action }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
 {% if pages is empty %}
-  {{ 'There are not add pages'|t }}
+  {{ 'There are not pages'|t }}
 {% else %}
   <ol class="publication_pages">
     {% for page in pages %}

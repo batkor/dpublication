@@ -28,6 +28,7 @@ function dpublication_theme(): array {
     'publication_pages' => [
       'variables' => [
         'pages' => [],
+        'actions' => [],
       ],
       'file' => 'dpublication.theme.inc',
     ],
