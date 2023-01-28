@@ -143,4 +143,24 @@ class PublicationPage extends ContentEntityBase implements PublicationPageInterf
     }
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public static function postDelete(EntityStorageInterface $storage, array $entities) {
+    parent::postDelete($storage, $entities);
+
+    /** @var \Drupal\dpublication\Entity\PublicationPage $entity */
+    foreach ($entities as $entity) {
+      $publication = $entity->getPublicationEntity();
+
+      foreach ($publication->get('pages')->getValue() as $delta => $item) {
+        if ($item['target_id'] === $entity->id()) {
+          $publication->get('pages')->removeItem($delta);
+        }
+      }
+
+      $publication->save();
+    }
+  }
+
 }
