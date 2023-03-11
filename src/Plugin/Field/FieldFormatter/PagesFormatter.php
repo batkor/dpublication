@@ -166,7 +166,8 @@ class PagesFormatter extends EntityReferenceFormatterBase implements ContainerFa
 
     /** @var \Drupal\dpublication\Entity\PublicationInterface $publication */
     $publication = $items->getEntity();
-    if ($this->accountProxy->hasPermission("edit own {$publication->id()} publication")) {
+
+    if ($this->accountProxy->hasPermission("edit own {$publication->bundle()} publication")) {
       $element['#actions'][] = Link::createFromRoute($this->t('Add page'), 'entity.publication_page.add_form', [
         'publication' => $publication->id(),
       ])->toRenderable();
