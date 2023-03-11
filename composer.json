@@ -1,0 +1,15 @@
+{
+    "name": "batkor/dpublication",
+    "description": "Provides publication entity.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "batkor",
+            "email": "info@batkor.ru"
+        }
+    ],
+    "require": {
+        "drupal/core": "^9 || ^10"
+    }
+}
