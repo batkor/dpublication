@@ -25,6 +25,15 @@ function template_preprocess_publication_pager(&$variables): void {
  */
 function template_preprocess_publication(array &$variables): void {
   _dpublication_default_prepare_template($variables, 'publication');
+
+  if (!$variables['entity']->get('pages')->isEmpty()) {
+    $variables['read_url'] = $variables['entity']
+      ->get('pages')
+      ->first()
+      ->get('entity')
+      ->getValue()
+      ->toUrl();
+  }
 }
 
 /**
