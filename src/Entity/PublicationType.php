@@ -25,6 +25,7 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  *     },
  *     "route_provider" = {
  *       "html" = "Drupal\Core\Entity\Routing\AdminHtmlRouteProvider",
+ *       "permissions" = "Drupal\user\Entity\EntityPermissionsRouteProvider",
  *     },
  *     "list_builder" = "Drupal\dpublication\ListBuilder\PublicationTypeListBuilder",
  *   },
@@ -40,6 +41,7 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  *     "edit-form" = "/admin/structure/publications/publication_types/{publication_type}",
  *     "delete-form" = "/admin/structure/publications/publication_types/{publication_type}/delete",
  *     "collection" = "/admin/structure/publications/publication_types",
+ *     "entity-permissions-form" = "/admin/structure/publications/publication_types/{publication_type}/permissions",
  *   },
  *   config_export = {
  *     "id",
