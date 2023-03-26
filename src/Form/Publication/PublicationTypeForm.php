@@ -77,8 +77,9 @@ final class PublicationTypeForm extends BundleEntityFormBase {
    * {@inheritdoc}
    */
   public function save(array $form, FormStateInterface $form_state) {
-    parent::save($form, $form_state);
     $form_state->setRedirect('entity.publication_type.collection');
+
+    return parent::save($form, $form_state);
   }
 
   /**

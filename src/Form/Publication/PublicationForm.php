@@ -51,7 +51,7 @@ class PublicationForm extends DpublicationBaseForm {
       ]);
     }
 
-    $this->getEntity()->save();
+    return $this->getEntity()->save();
   }
 
 }
